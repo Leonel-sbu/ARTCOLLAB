@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Platform</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Firebase SDK (Backend initialization) -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <img src="assets/images/logo.svg" alt="Logo" class="logo">
+    <nav>
+      <a href="pages/marketplace.html">Marketplace</a>
+      <a href="pages/learn.html">Learn</a>
+      <a href="pages/services.html">Services</a>
+      <a href="pages/community.html">Community</a>
+      <a href="pages/profile.html">Profile</a>
+      <a href="pages/login.html">Sign In</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="assets/images/hero-bg.svg" alt="Hero background" class="hero-bg">
+      <div class="hero-content">
+        <h1>Welcome to the Art Platform</h1>
+        <p>Buy, sell, learn, and commission amazing art from creators worldwide.</p>
+        <a class="btn" href="pages/marketplace.html">Explore Marketplace</a>
+      </div>
+    </section>
+
+    <section class="highlights">
+      <h2>Featured</h2>
+      <p>Placeholder for featured artworks, courses, and services.</p>
+    </section>
+  </main>
+
+  <!-- Frontend modules (Client-side) -->
+  <script src="firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/marketplace.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/services.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

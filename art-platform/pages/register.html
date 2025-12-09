@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Art Platform</title>
+  <link rel="stylesheet" href="../style.css">
+  
+  <!-- Firebase SDK (Backend initialization) -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+</head>
+<body>
+  <header><a href="../index.html">Home</a></header>
+  <main class="auth-container">
+    <div class="auth-card">
+      <h1>Create account</h1>
+      <form id="registerForm">
+        <label>Full name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <label>Confirm password
+          <input type="password" name="confirm" required>
+        </label>
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <p style="margin-top:12px">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+  </main>
+
+  <!-- Frontend: Auth module -->
+  <script src="../firebase-config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = e.target.name.value.trim();
+      const email = e.target.email.value.trim();
+      const password = e.target.password.value;
+      const confirm = e.target.confirm.value;
+      if (password !== confirm) return alert('Passwords do not match');
+      try {
+        const res = await Auth.register({name, email, password});
+        alert('Registered: ' + (res.user && res.user.email));
+      } catch (err) {
+        console.error(err);
+        alert('Registration failed');
+      }
+    });
+  </script>
+</body>
+</html>
