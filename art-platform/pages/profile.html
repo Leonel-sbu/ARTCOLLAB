@@ -3,14 +3,634 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile - Art Platform</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>My Profile | ARTCOLLAB</title>
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
 </head>
 <body>
-  <header><a href="../index.html">Home</a></header>
-  <main>
-    <h1>User Profile</h1>
-    <p>Edit your profile, view uploads, and manage listings.</p>
-  </main>
+    <!-- Navigation -->
+    <nav class="profile-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-palette"></i>
+                <span>ARTCOLLAB</span>
+            </a>
+            
+            <div class="nav-right">
+                <a href="../index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="marketplace/marketplace.html" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>Marketplace</span>
+                </a>
+                <a href="marketplace/cart.html" class="nav-link cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="profile.html" class="nav-link active">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-cover">
+                <div class="cover-image">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Cover">
+                    <button class="edit-cover-btn">
+                        <i class="fas fa-camera"></i> Edit Cover
+                    </button>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="avatar-container">
+                        <div class="avatar-wrapper">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user" alt="Profile" class="profile-avatar" id="profile-avatar">
+                            <button class="edit-avatar-btn" id="edit-avatar">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <h1 class="profile-name">Alex Morgan</h1>
+                        <p class="profile-title">Digital Artist & Illustrator</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">42</span>
+                                <span class="stat-label">Artworks</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">128</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">56</span>
+                                <span class="stat-label">Following</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">4.8</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i> Upload Art
+                        </button>
+                        <button class="btn-secondary" id="edit-profile-btn">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                        <button class="btn-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="btn-icon">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="profile-content">
+            <!-- Sidebar -->
+            <aside class="profile-sidebar">
+                <div class="sidebar-card">
+                    <h3>About Me</h3>
+                    <p class="bio">Passionate digital artist specializing in surreal landscapes and character design. Lover of vibrant colors and imaginative worlds.</p>
+                    
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Cape Town, South Africa</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Joined March 2023</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-globe"></i>
+                            <a href="#" class="website">alexmorgan.art</a>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>alex@example.com</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills">
+                        <h4>Skills & Mediums</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Digital Painting</span>
+                            <span class="skill-tag">Character Design</span>
+                            <span class="skill-tag">Illustration</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Procreate</span>
+                            <span class="skill-tag">Concept Art</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Connect</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-artstation"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <i class="fas fa-heart activity-icon liked"></i>
+                            <div class="activity-content">
+                                <p>Liked "Ocean Breeze" by @michael.paint</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-comment activity-icon commented"></i>
+                            <div class="activity-content">
+                                <p>Commented on "Urban Jungle"</p>
+                                <span class="activity-time">Yesterday</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-upload activity-icon uploaded"></i>
+                            <div class="activity-content">
+                                <p>Uploaded new artwork "Dreamscape"</p>
+                                <span class="activity-time">3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-shopping-cart activity-icon purchased"></i>
+                            <div class="activity-content">
+                                <p>Purchased "Golden Sunset"</p>
+                                <span class="activity-time">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <section class="profile-main">
+                <!-- Navigation Tabs -->
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="artworks">
+                        <i class="fas fa-images"></i> My Artworks
+                    </button>
+                    <button class="tab-btn" data-tab="collections">
+                        <i class="fas fa-folder"></i> Collections
+                    </button>
+                    <button class="tab-btn" data-tab="favorites">
+                        <i class="fas fa-heart"></i> Favorites
+                    </button>
+                    <button class="tab-btn" data-tab="purchases">
+                        <i class="fas fa-shopping-bag"></i> Purchases
+                    </button>
+                    <button class="tab-btn" data-tab="reviews">
+                        <i class="fas fa-star"></i> Reviews
+                    </button>
+                </div>
+
+                <!-- Artworks Tab Content -->
+                <div class="tab-content active" id="artworks-tab">
+                    <div class="artworks-header">
+                        <h2>My Artworks</h2>
+                        <div class="artwork-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Paintings</button>
+                            <button class="filter-btn">Digital</button>
+                            <button class="filter-btn">Sketches</button>
+                            <button class="filter-btn">
+                                <i class="fas fa-sort-amount-down"></i> Sort
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="artworks-grid">
+                        <!-- Artwork 1 -->
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Dreamscape">
+                                <div class="artwork-overlay">
+                                    <button class="artwork-action">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                                <span class="artwork-status published">Published</span>
+                            </div>
+                            <div class="artwork-info">
+                                <h3>Dreamscape</h3>
+                                <p class="artwork-meta">Digital Art • 24" x 36"</p>
+                                <div class="artwork-stats">
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-heart"></i> 128
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-eye"></i> 2.4K
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-shopping-cart"></i> 12
+                                    </span>
+                                </div>
+                                <div class="artwork-price">
+                                    <span class="price">R249.99</span>
+                                    <span class="status-badge">For Sale</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Artwork 2 -->
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w-400&q=80" alt="Neon Dreams">
+                                <div class="artwork-overlay">
+                                    <button class="artwork-action">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                                <span class="artwork-status draft">Draft</span>
+                            </div>
+                            <div class="artwork-info">
+                                <h3>Neon Dreams</h3>
+                                <p class="artwork-meta">Digital Art • 16" x 20"</p>
+                                <div class="artwork-stats">
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-heart"></i> 89
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-eye"></i> 1.2K
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-shopping-cart"></i> 8
+                                    </span>
+                                </div>
+                                <div class="artwork-price">
+                                    <span class="price">R189.99</span>
+                                    <span class="status-badge">For Sale</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Artwork 3 -->
+                        <div class="artwork-card">
+                            <div class="artwork-image">
+                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Minimal Forms">
+                                <div class="artwork-overlay">
+                                    <button class="artwork-action">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="artwork-action">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                                <span class="artwork-status published">Published</span>
+                            </div>
+                            <div class="artwork-info">
+                                <h3>Minimal Forms</h3>
+                                <p class="artwork-meta">Mixed Media • 18" x 24"</p>
+                                <div class="artwork-stats">
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-heart"></i> 156
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-eye"></i> 3.1K
+                                    </span>
+                                    <span class="artwork-stat">
+                                        <i class="fas fa-shopping-cart"></i> 24
+                                    </span>
+                                </div>
+                                <div class="artwork-price">
+                                    <span class="price">R329.99</span>
+                                    <span class="status-badge sold">Sold</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add New Artwork Card -->
+                        <div class="artwork-card add-new">
+                            <div class="add-new-content">
+                                <i class="fas fa-plus-circle"></i>
+                                <h3>Add New Artwork</h3>
+                                <p>Upload your creative work</p>
+                                <button class="btn-primary">
+                                    <i class="fas fa-upload"></i> Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collections Tab Content -->
+                <div class="tab-content" id="collections-tab">
+                    <div class="collections-header">
+                        <h2>My Collections</h2>
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i> New Collection
+                        </button>
+                    </div>
+                    
+                    <div class="collections-grid">
+                        <div class="collection-card">
+                            <div class="collection-image">
+                                <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e388?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Landscapes">
+                                <span class="collection-count">12 items</span>
+                            </div>
+                            <div class="collection-info">
+                                <h3>Landscape Series</h3>
+                                <p>A collection of my landscape paintings</p>
+                                <div class="collection-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="visibility public">
+                                        <i class="fas fa-globe"></i> Public
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="collection-card">
+                            <div class="collection-image">
+                                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Abstract">
+                                <span class="collection-count">8 items</span>
+                            </div>
+                            <div class="collection-info">
+                                <h3>Abstract Explorations</h3>
+                                <p>Experimental abstract works</p>
+                                <div class="collection-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="visibility private">
+                                        <i class="fas fa-lock"></i> Private
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="collection-card">
+                            <div class="collection-image">
+                                <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Commission">
+                                <span class="collection-count">5 items</span>
+                            </div>
+                            <div class="collection-info">
+                                <h3>Commission Work</h3>
+                                <p>Client commissions and requests</p>
+                                <div class="collection-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="visibility public">
+                                        <i class="fas fa-globe"></i> Public
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorites Tab Content -->
+                <div class="tab-content" id="favorites-tab">
+                    <div class="favorites-header">
+                        <h2>My Favorites</h2>
+                        <p class="section-subtitle">Artworks you've liked and saved</p>
+                    </div>
+                    
+                    <div class="favorites-grid">
+                        <div class="favorite-item">
+                            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Abstract Dreams">
+                            <div class="favorite-info">
+                                <h4>Abstract Dreams</h4>
+                                <p class="artist">@sarah.art</p>
+                                <span class="price">R249.99</span>
+                                <button class="remove-favorite">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="favorite-item">
+                            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Ocean Breeze">
+                            <div class="favorite-info">
+                                <h4>Ocean Breeze</h4>
+                                <p class="artist">@michael.paint</p>
+                                <span class="price">R189.99</span>
+                                <button class="remove-favorite">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="favorite-item">
+                            <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e388?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Golden Sunset">
+                            <div class="favorite-info">
+                                <h4>Golden Sunset</h4>
+                                <p class="artist">@nature.lover</p>
+                                <span class="price">R149.99</span>
+                                <button class="remove-favorite">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="edit-profile-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Edit Profile</h2>
+            
+            <form class="edit-profile-form">
+                <div class="form-group">
+                    <label>Profile Photo</label>
+                    <div class="avatar-upload">
+                        <div class="avatar-preview" id="avatar-preview">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user" alt="Avatar Preview">
+                        </div>
+                        <input type="file" id="avatar-upload" accept="image/*" hidden>
+                        <button type="button" class="btn-secondary" id="upload-avatar-btn">
+                            <i class="fas fa-upload"></i> Upload Photo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" value="Alex" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" value="Morgan" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" value="@alex.morgan" placeholder="Username">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" value="alex@example.com" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" value="Cape Town, South Africa" placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea rows="4" placeholder="Tell us about yourself">Passionate digital artist specializing in surreal landscapes and character design. Lover of vibrant colors and imaginative worlds.</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Website</label>
+                    <input type="url" value="https://alexmorgan.art" placeholder="Website URL">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-primary save-btn">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="upload-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Upload Artwork</h2>
+            
+            <form class="upload-form">
+                <div class="upload-area" id="drop-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop your artwork here</h3>
+                    <p>or click to browse files</p>
+                    <input type="file" id="file-input" accept="image/*" multiple hidden>
+                    <button type="button" class="btn-secondary" id="browse-btn">
+                        Browse Files
+                    </button>
+                    <p class="upload-note">Supports: JPG, PNG, GIF up to 10MB</p>
+                </div>
+
+                <div class="upload-preview" id="upload-preview" style="display: none;">
+                    <!-- Preview will be added here -->
+                </div>
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" placeholder="Enter artwork title">
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea rows="3" placeholder="Describe your artwork"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select>
+                            <option>Digital Art</option>
+                            <option>Painting</option>
+                            <option>Photography</option>
+                            <option>Sculpture</option>
+                            <option>Mixed Media</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (R)</label>
+                        <input type="number" placeholder="0.00" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tags</label>
+                    <input type="text" placeholder="Add tags separated by commas">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked>
+                        <span>Make this artwork public</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox">
+                        <span>Allow downloads</span>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-upload"></i> Upload Artwork
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>

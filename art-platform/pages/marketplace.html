@@ -4,18 +4,471 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marketplace - Art Platform</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="marketplace.css">
   
   <!-- Firebase SDK (Backend initialization) -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
 </head>
 <body>
-  <header><a href="../index.html">Home</a></header>
-  <main>
-    <h1>Marketplace</h1>
-    <p>Art listings will appear here.</p>
-  </main>
+<main
+        <!-- Navigation -->
+<nav class="marketplace-nav">
+    <div class="nav-container">
+  <a href="dashboard.html" class="logo">
+  <i class="fas fa-palette"></i>
+     <span>ARTCOLLAB</span>
+        </a>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search artworks, artists, styles...">
+            </div>
+            <button class="search-btn">Search</button>
+        </div>
+        
+        <div class="nav-right">
+            <a href="../index.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="marketplace.html" class="nav-link active">
+                <i class="fas fa-store"></i>
+                <span>Marketplace</span>
+            </a>
+            <a href="cart.html" class="nav-link cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="user-menu">
+                <img src="art-platform/assets/images/New folder/OIP (3).webp" alt="User" class="user-avatar">
+            </div>
+        </div>
+    </div>
+</nav>
+    <!-- Main Content -->
+    <main class="marketplace-container">
+        <!-- Sidebar Filters -->
+        <aside class="filters-sidebar">
+            <div class="filters-header">
+                <h3>Filters</h3>
+                <button class="clear-filters">Clear All</button>
+            </div>
+            
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range">
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <span>R</span>
+                            <input type="number" id="min-price" value="0" min="0">
+                        </div>
+                        <span class="to">to</span>
+                        <div class="price-input">
+                            <span>R</span>
+                            <input type="number" id="max-price" value="500" min="0">
+                        </div>
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-track"></div>
+                        <input type="range" id="price-slider" min="0" max="1000" value="500" class="slider">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4>Categories</h4>
+                <div class="category-list">
+                    <label class="category-item">
+                        <input type="checkbox" checked>
+                        <span>Paintings</span>
+                        <span class="count">42</span>
+                    </label>
+                    <label class="category-item">
+                        <input type="checkbox">
+                        <span>Digital Art</span>
+                        <span class="count">28</span>
+                    </label>
+                    <label class="category-item">
+                        <input type="checkbox">
+                        <span>Sculpture</span>
+                        <span class="count">15</span>
+                    </label>
+                    <label class="category-item">
+                        <input type="checkbox">
+                        <span>Photography</span>
+                        <span class="count">23</span>
+                    </label>
+                    <label class="category-item">
+                        <input type="checkbox">
+                        <span>Mixed Media</span>
+                        <span class="count">17</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Style Filter -->
+            <div class="filter-group">
+                <h4>Art Style</h4>
+                <div class="style-tags">
+                    <span class="style-tag">Abstract</span>
+                    <span class="style-tag">Realism</span>
+                    <span class="style-tag active">Impressionism</span>
+                    <span class="style-tag">Modern</span>
+                    <span class="style-tag">Minimalist</span>
+                    <span class="style-tag">Surrealism</span>
+                </div>
+            </div>
+            
+            <!-- Size Filter -->
+            <div class="filter-group">
+                <h4>Size</h4>
+                <div class="size-options">
+                    <button class="size-btn">Small</button>
+                    <button class="size-btn active">Medium</button>
+                    <button class="size-btn">Large</button>
+                    <button class="size-btn">Extra Large</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <section class="products-section">
+            <div class="products-header">
+                <h2>Discover Original Art</h2>
+                <div class="sort-options">
+                    <select id="sort-by">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Abstract Dreams">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <span class="product-badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@sarah.art</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Abstract Dreams</h3>
+                        <p class="product-desc">A vibrant exploration of color and form</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R249.99</span>
+                                <span class="original-price">R299.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="1" data-name="Abstract Dreams" data-price="249.99" data-image="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Ocean Breeze">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <span class="product-badge popular">POPULAR</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@michael.paint</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Ocean Breeze</h3>
+                        <p class="product-desc">Calming seascape with soft pastel colors</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R89.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="2" data-name="Ocean Breeze" data-price="189.99" data-image="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Urban Jungle">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@city.art</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Urban Jungle</h3>
+                        <p class="product-desc">Modern cityscape with geometric patterns</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R329.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="3" data-name="Urban Jungle" data-price="329.99" data-image="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e388?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Golden Sunset">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <span class="product-badge sale">SALE</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@nature.lover</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Golden Sunset</h3>
+                        <p class="product-desc">Warm landscape painting capturing twilight</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R149.99</span>
+                                <span class="original-price">R199.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="4" data-name="Golden Sunset" data-price="149.99" data-image="https://images.unsplash.com/photo-1543857778-c4a1a569e388?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Digital Dreams">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@digital.artist</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Digital Dreams</h3>
+                        <p class="product-desc">Futuristic digital artwork with neon colors</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R279.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="5" data-name="Digital Dreams" data-price="279.99" data-image="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Minimalist Forms">
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="add-wishlist" title="Add to Wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <span class="product-badge new">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="artist">@minimal.art</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                <span>3.5</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Minimalist Forms</h3>
+                        <p class="product-desc">Clean lines and simple shapes in monochrome</p>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">R34129.99</span>
+                            </div>
+                            <button class="add-to-cart" data-id="6" data-name="Minimalist Forms" data-price="129.99" data-image="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span>...</span>
+                <button class="page-btn">8</button>
+                <button class="next-btn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quick-view-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-product-image">
+                    <img src="" alt="" id="modal-product-img">
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modal-product-title"></h2>
+                    <p id="modal-product-artist"></p>
+                    <div class="modal-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (128 reviews)</span>
+                        </div>
+                    </div>
+                    <p class="modal-description" id="modal-product-desc"></p>
+                    <div class="modal-price">
+                        <span class="current" id="modal-product-price"></span>
+                        <span class="original" id="modal-product-original"></span>
+                    </div>
+                    <div class="modal-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="10" id="modal-qty">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" id="modal-add-to-cart">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="modal-details">
+                        <h4>Details</h4>
+                        <ul>
+                            <li><strong>Medium:</strong> Acrylic on Canvas</li>
+                            <li><strong>Dimensions:</strong> 24" x 36"</li>
+                            <li><strong>Style:</strong> Abstract Expressionism</li>
+                            <li><strong>Year:</strong> 2023</li>
+                            <li><strong>Shipping:</strong> Free worldwide shipping</li>
+                            <li><strong>Returns:</strong> 30-day return policy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cart-notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span>Item added to cart successfully!</span>
+            <a href="cart.html" class="view-cart-btn">View Cart</a>
+        </div>
+    </div>
+
   <!-- Frontend: Marketplace module -->
   <script src="../firebase-config.js"></script>
   <script src="../js/marketplace.js"></script>

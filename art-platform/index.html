@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Art Platform</title>
+  <title>ARTCOLLAB</title>
   <link rel="stylesheet" href="style.css">
   
   <!-- Firebase SDK (Backend initialization) -->
@@ -13,33 +13,189 @@
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js"></script>
 </head>
 <body>
+
   <header class="site-header">
-    <img src="assets/images/logo.svg" alt="Logo" class="logo">
+    <div class="logo-container">
+      <div class="logo">ARTCOLLAB</div>
+    </div>
     <nav>
       <a href="pages/marketplace.html">Marketplace</a>
       <a href="pages/learn.html">Learn</a>
       <a href="pages/services.html">Services</a>
       <a href="pages/community.html">Community</a>
       <a href="pages/profile.html">Profile</a>
-      <a href="pages/login.html">Sign In</a>
+      <a href="pages/login.html" class="sign-in-btn">Sign In</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <img src="assets/images/hero-bg.svg" alt="Hero background" class="hero-bg">
+      <div class="hero-bg" style="background: linear-gradient(rgba(85, 84, 84, 0.7), rgba(105, 105, 105, 0.7)), url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80'); background-size: cover; background-position: center;"></div>
       <div class="hero-content">
-        <h1>Welcome to the Art Platform</h1>
-        <p>Buy, sell, learn, and commission amazing art from creators worldwide.</p>
+        <h1>Welcome to the ARTCOLLAB</h1>
+        <p>Buy, sell, learn, and commission amazing art from creators worldwide. Discover unique artworks and connect with talented artists.</p>
         <a class="btn" href="pages/marketplace.html">Explore Marketplace</a>
       </div>
     </section>
 
+    <section class="slider-section">
+      <h2 class="section-title">get Features of Artworks</h2>
+      <p class="section-subtitle">Discover our curated selection of exceptional artworks from talented artists around the globe.</p>
+      
+      <div class="slider-container">
+        <div class="slider" id="imageSlider">
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Abstract Painting">
+            <div class="slide-content">
+              <h3 class="slide-title">Cosmic Harmony</h3>
+              <p class="slide-artist">By Elena Rodriguez</p>
+              <p class="slide-price">R1,850</p>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1790&q=80" alt="Portrait Art">
+            <div class="slide-content">
+              <h3 class="slide-title">Reflections</h3>
+              <p class="slide-artist">By Marcus Chen</p>
+              <p class="slide-price">R42,300</p>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Modern Sculpture">
+            <div class="slide-content">
+              <h3 class="slide-title">Urban Flow</h3>
+              <p class="slide-artist">By Sophia Williams</p>
+              <p class="slide-price">R3,500</p>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1772&q=80" alt="Landscape Art">
+            <div class="slide-content">
+              <h3 class="slide-title">Mountain Dreams</h3>
+              <p class="slide-artist">By David Park</p>
+              <p class="slide-price">R11,200</p>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Digital Art">
+            <div class="slide-content">
+              <h3 class="slide-title">Digital Dreams</h3>
+              <p class="slide-artist">By Alex Turner</p>
+              <p class="slide-price">R4,950</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-nav">
+        <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
     <section class="highlights">
-      <h2>Featured</h2>
-      <p>Placeholder for featured artworks, courses, and services.</p>
+      <h2>Highlights</h2>
+      <div class="highlight-cards">
+        <div class="highlight-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Art Courses">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Art Courses</h3>
+            <p class="card-description">Learn from professional artists with our comprehensive online courses. From beginner to advanced levels.</p>
+            <a href="pages/learn.html" class="card-link">Explore Courses →</a>
+          </div>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Commission Services">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Commission Services</h3>
+            <p class="card-description">Request custom artwork from our talented artists. Get exactly what you envision for your space.</p>
+            <a href="pages/services.html" class="card-link">Request Artwork →</a>
+          </div>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80" alt="Artist Community">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Artist Community</h3>
+            <p class="card-description">Connect with artists worldwide, share techniques, get feedback, and grow together.</p>
+            <a href="pages/community.html" class="card-link">Join Community →</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Marketplace</h3>
+        <a href="#">Paintings</a>
+        <a href="#">Sculptures</a>
+        <a href="#">Digital Art</a>
+        <a href="#">Photography</a>
+        <a href="#">Limited Editions</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Learn</h3>
+        <a href="#">Beginner Courses</a>
+        <a href="#">Advanced Techniques</a>
+        <a href="#">Artist Workshops</a>
+        <a href="#">Free Tutorials</a>
+        <a href="#">Art History</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Services</h3>
+        <a href="#">Commission Art</a>
+        <a href="#">Art Consulting</a>
+        <a href="#">Framing & Shipping</a>
+        <a href="#">Artist Promotion</a>
+        <a href="#">Exhibition Services</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <p>Follow us on social media</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2026 ARTCOLLAB. All rights reserved. | <a href="#" style="color: #6a11cb;">Privacy Policy</a> | <a href="#" style="color: #6a11cb;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK (Backend initialization) -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js"></script>
+  
+
+
+
+    </section>
+  </main>
+
 
   <!-- Frontend modules (Client-side) -->
   <script src="firebase-config.js"></script>
